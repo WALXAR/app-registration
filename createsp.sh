@@ -7,24 +7,23 @@ do
     esac
 done
 
-subscription="/subscriptions/{SubID}/resourceGroups/{ResourceGroup1} /subscriptions/{SubID}/resourceGroups/{ResourceGroup2}" #blank space for a list of subscriptions
 
 echo "Checking if subscription already exist"
 #existsubscription= true && $(az account list --query '[0].{Name:name}')
+#az account alias list
 existsubscription=true
 
 if [ "$existsubscription" = true ]
     then
         echo "Checkint if Service Ppal already exist ................"
-        exist=$(az ad sp list --filter "displayname eq '$name'")
-        if [ $exist ]
+        exist=$(az ad sp list --filter "displayname eq '$name'" -o table)
+        if [ "$exist" = '' ]
             then
-                echo "Service Ppal Already Created"
+                echo "Service Ppal Doesnt Exist, Creating Service Principal $name with contributor role ..........."
+                SP=$(az ad sp create-for-rbac -n "$name" --role "Contributor" --scopes "//subscriptions//$subscription" --query '[appId,password]' -o json) #root of the subscription
+                echo $SP
             else       
-                echo "Creating Service Principal $name with contributor role ..........."
-                ID=$(az ad sp create-for-rbac --name $name --query '[appId,password]' -o json)
-                az ad sp create-for-rbac -n "$name" --role Contributor --scopes "/subscriptions/$subscription"  #root of the subscription
-                echo $ID
+                echo "Service Ppal Already Created"
         fi
     else
         echo "Subscription $name Doesn't exist"

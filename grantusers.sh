@@ -19,7 +19,7 @@ existsubscription=true
 if [ "$existsubscription" = true ]
     then
         for usersfn in ${users[@]}; do    
-          result= $(az role assignment create --role "$role" --assignee "$usersfn$tenant" --subscription "$subscription")
+          (az role assignment create --role "$role" --assignee "$usersfn$tenant" --subscription "$subscription")
         done
     else
         echo "Subscription $name Doesn't exist"
