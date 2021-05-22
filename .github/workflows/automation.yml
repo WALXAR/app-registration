@@ -43,7 +43,7 @@ jobs:
         run: bash ./gh_patternupload.sh
         
       - name: PWD
-        run: pwd
+        run: echo ~
 
       - name: LS
         run: ls -a
