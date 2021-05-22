@@ -19,7 +19,7 @@ ls -a
 cp -a ~/repoa/github-actions-for-ci/. ~/repob/demorepo-borrar/
 cd ~/repob/demorepo-borrar
 ls -a
-git remote add origin https://github.com/WALXAR/demorepo-borrar.git
+git remote add origin https://$GITHUB_TOKEN@github.com/WALXAR/demorepo-borrar.git
 git add .
 git commit -m "new commit"
 git branch -M main
