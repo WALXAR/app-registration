@@ -2,7 +2,7 @@
 
 git config --global user.email "walxar@gmail.com"
 git config --global user.name "walxar"
-git config --global hub.protocol https
+hub config --global hub.protocol https
 ls -a
 sudo mkdir ~/repoa && cd ~/repoa
 sudo chmod 777 ~/repoa
