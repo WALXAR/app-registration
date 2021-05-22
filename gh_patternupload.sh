@@ -11,7 +11,7 @@ sudo rm -rf ./repoa/github-actions-for-ci/.git
 sudo rm -rf ./repoa/github-actions-for-ci/.github 
 ls -a
 echo "cloning repo B"
-sudo mkdir ./repob && cd ./repob
+sudo mkdir ../repob && cd ./repob
 sudo chmod 777 ../repob
 git clone https://$GITHUB_TOKEN@github.com/WALXAR/demorepo-borrar.git
 # #echo "More description " >> /c/Users/walte/Desktop/test/security-strategy-essentials/README.md
