@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Pattern Copy
 
 # Controls when the action will run. 
 on:
@@ -36,4 +36,4 @@ jobs:
           echo test, and deploy your project.
       
       - name: Pattern Copy
-        run: bash ./init.sh
+        run: bash ./gh_patternupload.sh
