@@ -19,7 +19,7 @@ sleep 5
 cp -a ~/repoa/github-actions-for-ci/. ~/repob/demorepo-borrar/
 cd ~/repob/demorepo-borrar
 ls -a
-git remote add origin https://$GITHUB_TOKEN@github.com/WALXAR/demorepo-borrar.git
+git remote set-url --add origin http://github.com/WALXAR/demorepo-borrar
 git add .
 git commit -m "new commit"
 git branch -M main
