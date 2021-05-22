@@ -23,4 +23,4 @@ git remote add origin https://$GITHUB_TOKEN@github.com/WALXAR/demorepo-borrar.gi
 git add .
 git commit -m "new commit"
 git branch -M main
-git push -u origin main
+git push --set-upstream origin main
