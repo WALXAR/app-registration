@@ -41,3 +41,10 @@ jobs:
       
       - name: Pattern Copy
         run: bash ./gh_patternupload.sh
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+          directory: ./repob/demorepo-borrar
