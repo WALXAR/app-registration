@@ -8,7 +8,7 @@ sudo chmod 777 ~/repoa
 echo "cloning repo A"
 git clone https://$GITHUB_TOKEN@github.com/WALXAR/github-actions-for-ci.git
 sudo rm -rf ~/repoa/github-actions-for-ci/.git
-sudo rm -rf ~/repoa/github-actions-for-ci/.github && ls -a
+sudo rm -rf ~/repoa/github-actions-for-ci/.github && cd ~/repoa/github-actions-for-ci && ls -a
 echo "cloning repo B"
 sudo mkdir ~/repob && cd ~/repob
 sudo chmod 777 ~/repob
