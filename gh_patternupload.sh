@@ -16,7 +16,7 @@ sudo chmod 777 ~/repob
 git clone https://$GITHUB_TOKEN@github.com/WALXAR/demorepo-borrar.git
 ls -a
 # #echo "More description " >> /c/Users/walte/Desktop/test/security-strategy-essentials/README.md
-cp -r ~/repoa/github-actions-for-ci/ ~/repob/demorepo-borrar/
+cp -a ~/repoa/github-actions-for-ci/. ~/repob/demorepo-borrar/
 cd ~/repob/demorepo-borrar
 ls -a
 git add .
