@@ -53,5 +53,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUBACTIONSTOKEN }}
           branch: main
-          directory: '/home/runner/repob/demorepo-borrar'
-          repository: 'WALXAR/demorepo-borrar'
+          directory: '/home/runner/repob/pocgithub'
+          repository: 'WALXAR/pocgithub'

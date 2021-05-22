@@ -14,17 +14,15 @@ sleep 5
 echo "cloning repo B"
 sudo mkdir ~/repob && cd ~/repob
 sudo chmod 777 ~/repob
-git clone https://github.com/WALXAR/demorepo-borrar.git && ls -a
+git clone https://github.com/WALXAR/pocgithub.git && ls -a
 sleep 5
 # #echo "More description " >> /c/Users/walte/Desktop/test/security-strategy-essentials/README.md
-cp -a ~/repoa/github-actions-for-ci/. ~/repob/demorepo-borrar/
-cd ~/repob/demorepo-borrar
+cp -a ~/repoa/github-actions-for-ci/. ~/repob/pocgithub/
+cd ~/repob/pocgithub
 ls -a
 # git remote set-url upstream https://$GITHUB_TOKEN:x-oauth-basic@github.com/WALXAR/demorepo-borrar.git
 # git remote set-url origin https://$GITHUB_TOKEN:x-oauth-basic@github.com/WALXAR/demorepo-borrar.git
 sleep 5
-git config --global user.email "walxar@gmail.com"
-git config --global user.name "walxar"
 git pull origin main
 git add .
 git commit -m "new commit"
