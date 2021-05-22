@@ -1,36 +1,35 @@
-#!/bin/bash -x
+#!/bin/bash 
 
-while getopts "n:w:b:" flag
-do
-    case "${flag}" in
-        n) name=${OPTARG};;
-        w) workload=${OPTARG};;
-        b) billing=${OPTARG};;
-    esac
-done
-#Variables
-PROJECT_NAME=$name
-billing="/providers/Microsoft.Billing/billingAccounts/eb8747fc-e75e-5cXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
-echo "Checking if subscription already exist"
-#existsubscription= true && $(az account list --query '[0].{Name:name}')
-existsubscription=true
+az account list -o table
+echo ''
+echo "Checking if Subscription Alias already exist"
+echo "az account alias show --name $SUBSCRIPTION_NAME --query 'properties.subscriptionId'"
+existsubscription=$(az account alias show --name $SUBSCRIPTION_NAME --query 'properties.subscriptionId' -o tsv)
+echo ''
 
-if [ "$existsubscription" = true ]
+if [ "$existsubscription" = '' ]
     then
-        echo "Checking Billing account for $PROJECT_NAME"
-        ID=$(az billing account list --query '[0].{Id:id}' -o json)
-        echo $ID
-
-        echo "Creating new subscription ..................."
-        subscriptionId= $(az account alias create --name "$name" --billing-scope "$billing" --display-name "$name" --workload "$workload" --query 'properties.subscriptionId')
+        echo "Subscription Doesn't exist .. Creating new subscription ..................."
+        echo "**********************************************************************************************"   
+        echo "az account alias create --name "$SUBSCRIPTION_NAME" --billing-scope "$BILLING_ID" --display-name "$SUBSCRIPTION_DISPLAY_NAME" --workload "$WORKLOAD" --query 'properties.subscriptionId'"
+        subscriptionId=$(az account alias create --name "$SUBSCRIPTION_NAME" --billing-scope "$BILLING_ID" --display-name "$SUBSCRIPTION_DISPLAY_NAME" --workload "$WORKLOAD" --query 'properties.subscriptionId' -o tsv)
+       
         #TO DO Get the Subscription ID and store in environment variables
-        [[ $subscriptionId -eq '' ]] && echo 'Subscription Created' || 'Failed to created'
-        EXPORT SUBSCRIPTIONID=$subscriptionId
-        exit 0
+        if [ "$subscriptionId" != '' ] 
+            then 
+              echo "Subscription Created with id $subscriptionId ..............................."
+              export SUBSCRIPTION_IDS=$subscriptionId
+            else
+              echo "Failed to created Subscription $SUBSCRIPTION_NAME ............................................."
+              #exit 1
+        fi
+        echo "**********************************************************************************************"   
         
     else
-        echo "Subscription $name already exist"
-        exit 0
+        echo "Subscription $SUBSCRIPTION_NAME with id $existsubscription already exist"
+        export SUBSCRIPTION_IDS=$existsubscription
+        echo "**********************************************************************************************"   
+        echo "**********************************************************************************************"   
 fi
 

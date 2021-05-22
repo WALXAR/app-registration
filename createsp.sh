@@ -1,30 +1,35 @@
-#!/bin/bash -x
-while getopts "s:n:" flag
-do
-    case "${flag}" in
-        s) subscription=${OPTARG};;
-        n) name=${OPTARG};;
-    esac
-done
+#!/bin/bash 
 
 
-echo "Checking if subscription already exist"
-#existsubscription= true && $(az account list --query '[0].{Name:name}')
-#az account alias list
-existsubscription=true
 
-if [ "$existsubscription" = true ]
+echo "subscriptions $SUBSCRIPTION_IDS"
+echo "name $PROJECTNAME"
+
+az account list -o table
+echo ''
+echo "Checking if Subscription Alias already exist"
+existsubscription=$(az account alias show --name $SUBSCRIPTION_NAME --query 'properties.subscriptionId')
+echo ''
+
+
+if [ "$existsubscription" != '' ]
     then
-        echo "Checkint if Service Ppal already exist ................"
-        exist=$(az ad sp list --filter "displayname eq '$name'" -o table)
+        echo "The Subscription ID $existsubscription"
+        echo "Checking if Service Ppal already exist ................"
+        echo "**********************************************************************************************"
+        exist=$(az ad sp list --filter "displayname eq '$PROJECTNAME'" -o tsv)
         if [ "$exist" = '' ]
             then
-                echo "Service Ppal Doesnt Exist, Creating Service Principal $name with contributor role ..........."
-                SP=$(az ad sp create-for-rbac -n "$name" --role "Contributor" --scopes "//subscriptions//$subscription" --query '[appId,password]' -o json) #root of the subscription
+                echo "Service Ppal Doesn't Exist, Creating Service Principal $PROJECTNAME with contributor role ..........."
+                echo "**********************************************************************************************"
+                SP=$(az ad sp create-for-rbac -n "$PROJECTNAME" --role "Contributor" --scopes "//subscriptions//$SUBSCRIPTION_IDS" --query '[appId,password]' -o json)
                 echo $SP
+                echo "**********************************************************************************************"
             else       
-                echo "Service Ppal Already Created"
+                echo "Service Ppal $PROJECTNAME Already Created"
+                echo "**********************************************************************************************"
         fi
     else
-        echo "Subscription $name Doesn't exist"
+        echo "Subscription $SUBSCRIPTION_NAME Doesn't exist"
+        echo "**********************************************************************************************"
 fi

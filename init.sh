@@ -1,17 +1,33 @@
 #!/bin/bash 
 
-echo "loading variables .........................."
+echo "0. loading variables ........................................."
+echo ""
+source ./input_variables.sh
 source ./variables.sh
+echo ""
 
 source ./login.sh
 
-echo "Creating New Subscription..........."
-#source ./createsubscription.sh -n "subscriptionaliasname" -w "workload(production, devtest, workload)" -b "billingid"
+echo "1. Creating New Subscription.................................."
+source ./createsubscription.sh 
+echo ""
+echo ""
 
-echo "Creating New Service Ppal"
-#source ./createsp.sh -s "$SUBSCRIPTION_ID" -n "$PROJECTNAME"
+#Necesary to refresh Subscriptions
+source ./login.sh 
 
-echo "Assign Role to ussers in new Subscription"
-source ./grantusers.sh -u "walxar" -r "Owner" -s "ff14d8b2-4d78-4128-a4a2-192b1b37d9d8" -t "$TENANTDOMAIN"
+echo "2. Creating New Service Ppal.................................."
+source ./createsp.sh 
+echo ""
+echo ""
+
+echo "3. Assign Role to users in new Subscription .................."
+source ./grantusers.sh
+echo ""
+echo ""
+
+source ./logout.sh
+
+
 
 
