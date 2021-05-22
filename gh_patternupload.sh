@@ -22,6 +22,8 @@ cd ~/repob/demorepo-borrar
 ls -a
 git remote set-url upstream https://$GITHUB_TOKEN:x-oauth-basic@github.com/WALXAR/demorepo-borrar.git
 git remote set-url origin https://$GITHUB_TOKEN:x-oauth-basic@github.com/WALXAR/demorepo-borrar.git
+sleep 5
+cat ~/.git-credentials
 git config --global user.email "walxar@gmail.com"
 git config --global user.name "walxar"
 git add .
