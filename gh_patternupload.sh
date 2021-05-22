@@ -2,7 +2,7 @@
 
 mkdir /repoa && cd repoa
 echo "cloning repo A"
-git clone git@github.com:WALXAR/github-actions-for-ci.git
+git clone $(GITHUB_TOKEN)@github.com:WALXAR/github-actions-for-ci.git
 sudo rm -r /c/Users/walte/Desktop/test/github-actions-for-ci.git/.git
 # echo "cloning repo B"
 # git clone git@github.com:WALXAR/demorepo-borrar.git
