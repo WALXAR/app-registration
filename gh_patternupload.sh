@@ -25,6 +25,7 @@ ls -a
 sleep 5
 git config --global user.email "walxar@gmail.com"
 git config --global user.name "walxar"
+git pull origin main
 git add .
 git commit -m "new commit"
 git branch -M main
