@@ -45,6 +45,9 @@ jobs:
       - name: PWD
         run: pwd
 
+      - name: LS
+        run: ls -a
+
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
