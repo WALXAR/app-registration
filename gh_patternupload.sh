@@ -15,14 +15,14 @@ sleep 5
 echo "cloning repo B"
 sudo mkdir ~/repob && cd ~/repob
 sudo chmod 777 ~/repob
-git clone https://$GITHUB_TOKEN:x-oauth-basic@github.com/WALXAR/pocgithub.git && ls -a
 sleep 5
 # #echo "More description " >> /c/Users/walte/Desktop/test/security-strategy-essentials/README.md
-cp -a ~/repoa/github-actions-for-ci/. ~/repob/pocgithub/
-cd ~/repob/pocgithub
+cp -a ~/repoa/github-actions-for-ci/. ~/repob/
+cd ~/repob/
+echo "init repo"
+git init
 ls -a
-# git remote set-url upstream https://$GITHUB_TOKEN:x-oauth-basic@github.com/WALXAR/demorepo-borrar.git
-# git remote set-url origin https://$GITHUB_TOKEN:x-oauth-basic@github.com/WALXAR/demorepo-borrar.git
+git remote add origin https://$GITHUB_TOKEN:x-oauth-basic@github.com/WALXAR/pocgithub.git
 sleep 5
 git pull origin main
 git add .
