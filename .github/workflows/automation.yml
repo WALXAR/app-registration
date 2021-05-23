@@ -41,6 +41,7 @@ jobs:
           repository: walxar/pocgithub
           token: ${{ secrets.GITHUBACTIONSTOKEN }} 
           path: repob
+          ref: ''
          
       # Runs a single command using the runners shell
       - name: List
