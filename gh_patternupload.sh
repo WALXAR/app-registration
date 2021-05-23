@@ -3,6 +3,7 @@
 git config --global user.email "walxar@gmail.com"
 git config --global user.name "walxar"
 hub config --global hub.protocol https
+echo "token $GITHUB_TOKEN"
 ls -a
 sudo mkdir ~/repoa && cd ~/repoa
 sudo chmod 777 ~/repoa

@@ -40,6 +40,8 @@ jobs:
           echo test, and deploy your project.
       
       - name: Pattern Copy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUBACTIONSTOKEN }} 
         run: bash ./gh_patternupload.sh
 
       - name: Push changes
