@@ -7,14 +7,14 @@ ls -a
 sudo mkdir ~/repoa && cd ~/repoa
 sudo chmod 777 ~/repoa
 echo "cloning repo A"
-git clone https://github.com/WALXAR/github-actions-for-ci.git
+git clone https://$GITHUB_TOKEN:x-oauth-basic@github.com/WALXAR/github-actions-for-ci.git
 sudo rm -rf ~/repoa/github-actions-for-ci/.git
 sudo rm -rf ~/repoa/github-actions-for-ci/.github && cd ~/repoa/github-actions-for-ci && ls -a
 sleep 5
 echo "cloning repo B"
 sudo mkdir ~/repob && cd ~/repob
 sudo chmod 777 ~/repob
-git clone https://github.com/WALXAR/pocgithub.git && ls -a
+git clone https://$GITHUB_TOKEN:x-oauth-basic@github.com/WALXAR/pocgithub.git && ls -a
 sleep 5
 # #echo "More description " >> /c/Users/walte/Desktop/test/security-strategy-essentials/README.md
 cp -a ~/repoa/github-actions-for-ci/. ~/repob/pocgithub/
