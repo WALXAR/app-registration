@@ -55,10 +55,10 @@ jobs:
       - name: Pattern Copy
         run: bash ./gh_patternupload.sh
 
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUBACTIONSTOKEN }}
-          branch: main
-          directory: '/home/runner/repob/pocgithub'
-          repository: 'WALXAR/pocgithub'
+      # - name: Push changes
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     github_token: ${{ secrets.GITHUBACTIONSTOKEN }}
+      #     branch: main
+      #     directory: '/home/runner/repob/pocgithub'
+      #     repository: 'WALXAR/pocgithub'
