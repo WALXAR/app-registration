@@ -24,7 +24,6 @@ git init
 ls -a
 git remote add origin https://$GITHUB_TOKEN:x-oauth-basic@github.com/WALXAR/pocgithub.git
 sleep 5
-git pull origin main
 git add .
 git commit -m "new commit"
 git branch -M main
