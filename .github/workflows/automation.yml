@@ -25,12 +25,24 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: clone repo workflow 
+        uses: actions/checkout@v2
 
-      - uses: actions/checkout@v2
+      - name: clone repo a
+        uses: actions/checkout@v2
+        with: 
+          repository: walxar/github-actions-for-ci
+          token: ${{ secrets.GITHUBACTIONSTOKEN }} 
       
+      - name: clone repo b 
+        uses: actions/checkout@v2
+        with: 
+          repository: walxar/pocgithub
+          token: ${{ secrets.GITHUBACTIONSTOKEN }} 
+         
       # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world! $GITHUB_TOKEN
+      - name: List
+        run: ls -a
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
