@@ -28,20 +28,20 @@ jobs:
       - name: clone repo workflow 
         uses: actions/checkout@v2
 
-      - name: clone repo a
-        uses: actions/checkout@v2
-        with: 
-          repository: walxar/github-actions-for-ci
-          token: ${{ secrets.GITHUBACTIONSTOKEN }} 
-          path: repoa
+      # - name: clone repo a
+      #   uses: actions/checkout@v2
+      #   with: 
+      #     repository: walxar/github-actions-for-ci
+      #     token: ${{ secrets.GITHUBACTIONSTOKEN }} 
+      #     path: repoa
       
-      - name: clone repo b 
-        uses: actions/checkout@v2
-        with: 
-          repository: walxar/pocgithub
-          token: ${{ secrets.GITHUBACTIONSTOKEN }} 
-          path: repob
-          ref: ''
+      # - name: clone repo b 
+      #   uses: actions/checkout@v2
+      #   with: 
+      #     repository: walxar/pocgithub
+      #     token: ${{ secrets.GITHUBACTIONSTOKEN }} 
+      #     path: repob
+      #     ref: ''
          
       # Runs a single command using the runners shell
       - name: List
