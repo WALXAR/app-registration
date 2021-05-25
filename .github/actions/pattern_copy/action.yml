@@ -28,6 +28,6 @@ runs:
       name:  Random number
       run: echo "::set-output name=random-id::$(echo $RANDOM)"
       shell: bash
-      
-    - run: ${{ github.action_path }}/goodbye.sh
-      shell: bash
+
+    # - run: ${{ github.action_path }}/goodbye.sh
+    #   shell: bash
