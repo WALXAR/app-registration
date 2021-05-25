@@ -74,7 +74,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - id: foo
-        uses: actions/pattern_copy@v1
+        uses: actions/pattern_copy
         with:
           github_token: ${{ secrets.GITHUBACTIONSTOKEN }}
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
