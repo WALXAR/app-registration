@@ -15,11 +15,10 @@ resource "azurerm_resource_group" "azure_apps_rg" {
 }
 
 
-
 resource "azurerm_app_service_plan" "serviceplan" {
-  name                = "ASP-${data.azurerm_resource_group.azure_apps_rg.name}"
+  name                = "ASP-${azurerm_resource_group.azure_apps_rg.name}"
   location            = "centralus"
-  resource_group_name = data.azurerm_resource_group.azure_apps_rg.name
+  resource_group_name = azurerm_resource_group.azure_apps_rg.name
   kind                = "Linux"
   reserved            = true
 
@@ -33,7 +32,7 @@ resource "azurerm_app_service_plan" "serviceplan" {
 resource "azurerm_app_service" "appservice" {
   name                = "walxarappservicetest2"
   location            = "centralus"
-  resource_group_name = data.azurerm_resource_group.azure_apps_rg.name
+  resource_group_name = azurerm_resource_group.azure_apps_rg.name
   app_service_plan_id = azurerm_app_service_plan.serviceplan.id
 
 
