@@ -9,20 +9,11 @@ provider "azurerm" {
 }
 
 
-# resource "azurerm_resource_group" "example" {
-#   name     = "example-resources"
-#   location = "West Europe"
-# }
-
-#Concierge subscription
-
-data "azurerm_resource_group" "azure_apps_rg" {
-  name = "learn-9c26e120-0646-47e4-aeec-9adb5640573b"
+resource "azurerm_resource_group" "azure_apps_rg" {
+  name     = "azure_apps_rg"
+  location = "centralus"
 }
 
-output "resource_group_id" {
-  value = data.azurerm_resource_group.azure_apps_rg.id
-}
 
 
 resource "azurerm_app_service_plan" "serviceplan" {
@@ -38,14 +29,6 @@ resource "azurerm_app_service_plan" "serviceplan" {
   }
   
 }
-
-# data "azurerm_app_service_plan" "serviceplan" {
-#   name = "learn-9c26e120-0646-47e4-aeec-9adb5640573b"
-# }
-
-# output "resource_group_idser" {
-#   value = data.azurerm_app_service_plan.serviceplan.id
-# }
 
 resource "azurerm_app_service" "appservice" {
   name                = "walxarappservicetest2"
