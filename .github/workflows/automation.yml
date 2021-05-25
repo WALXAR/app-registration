@@ -2,64 +2,80 @@
 
 name: Pattern Copy
 
-# Controls when the action will run. 
-on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+# # Controls when the action will run. 
+# on:
+#   # Triggers the workflow on push or pull request events but only for the main branch
+#   push:
+#     branches: [ main ]
+#   pull_request:
+#     branches: [ main ]
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+#   # Allows you to run this workflow manually from the Actions tab
+#   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUBACTIONSTOKEN }} 
+# # A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# jobs:
+#   # This workflow contains a single job called "build"
+#   build:
+#     # The type of runner that the job will run on
+#     runs-on: ubuntu-latest
+#     env:
+#       GITHUB_TOKEN: ${{ secrets.GITHUBACTIONSTOKEN }} 
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: clone repo workflow 
-        uses: actions/checkout@v2
+#     # Steps represent a sequence of tasks that will be executed as part of the job
+#     steps:
+#       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+#       - name: clone repo workflow 
+#         uses: actions/checkout@v2
 
-      # - name: clone repo a
-      #   uses: actions/checkout@v2
-      #   with: 
-      #     repository: walxar/github-actions-for-ci
-      #     token: ${{ secrets.GITHUBACTIONSTOKEN }} 
-      #     path: repoa
+#       # - name: clone repo a
+#       #   uses: actions/checkout@v2
+#       #   with: 
+#       #     repository: walxar/github-actions-for-ci
+#       #     token: ${{ secrets.GITHUBACTIONSTOKEN }} 
+#       #     path: repoa
       
-      # - name: clone repo b 
-      #   uses: actions/checkout@v2
-      #   with: 
-      #     repository: walxar/pocgithub
-      #     token: ${{ secrets.GITHUBACTIONSTOKEN }} 
-      #     path: repob
-      #     ref: ''
+#       # - name: clone repo b 
+#       #   uses: actions/checkout@v2
+#       #   with: 
+#       #     repository: walxar/pocgithub
+#       #     token: ${{ secrets.GITHUBACTIONSTOKEN }} 
+#       #     path: repob
+#       #     ref: ''
          
-      # Runs a single command using the runners shell
-      - name: List
-        run: ls -a
+#       # Runs a single command using the runners shell
+#       - name: List
+#         run: ls -a
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+#       # Runs a set of commands using the runners shell
+#       - name: Run a multi-line script
+#         run: |
+#           echo Add other actions to build,
+#           echo test, and deploy your project.
       
-      - name: Pattern Copy
-        run: bash ./gh_patternupload.sh
+#       - name: Pattern Copy
+#         run: bash ./gh_patternupload.sh
 
-      # - name: Push changes
-      #   uses: ad-m/github-push-action@master
-      #   with:
-      #     github_token: ${{ secrets.GITHUBACTIONSTOKEN }}
-      #     branch: main
-      #     directory: '/home/runner/repob/pocgithub'
-      #     repository: 'WALXAR/pocgithub'
+#       # - name: Push changes
+#       #   uses: ad-m/github-push-action@master
+#       #   with:
+#       #     github_token: ${{ secrets.GITHUBACTIONSTOKEN }}
+#       #     branch: main
+#       #     directory: '/home/runner/repob/pocgithub'
+#       #     repository: 'WALXAR/pocgithub'
+
+
+on: [push]
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: Pattern Copy
+    steps:
+      - uses: actions/checkout@v2
+      - id: foo
+        uses: actions/pattern_copy@v1
+        with:
+          github_token: ${{ secrets.GITHUBACTIONSTOKEN }}
+      - run: echo random-number ${{ steps.foo.outputs.random-number }}
+        shell: bash
