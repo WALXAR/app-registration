@@ -63,6 +63,9 @@ jobs:
         working-directory: ./terraform
 
     steps:
+    - name: login
+      run: az login --service-principal -u=f825f6dd-b211-46b0-aaf6-5d9474ad099a -p=oM7.U_DZ1U1OBS-Mfe2XvW7tfZg.LhE9o3 --tenant=fedc3089-4e9e-4945-924f-70be916da72b && az account set -s=ff14d8b2-4d78-4128-a4a2-192b1b37d9d8
+
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
       uses: actions/checkout@v2
