@@ -73,7 +73,9 @@ jobs:
     name: Pattern Copy
     steps:
       - uses: actions/checkout@v2
+        name: Checkout Repo
       - id: foo
+        name: pattern copy
         uses: ./.github/actions/pattern_copy
         with:
           github_token: ${{ secrets.GITHUBACTIONSTOKEN }}
