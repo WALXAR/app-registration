@@ -1,0 +1,50 @@
+{
+  "project": "gms",
+  "dev": {
+    "tenant": "",
+    "tenant_domain": "sandbox.onmicrosoft.com",
+    "vars": {
+      "vnet": "10.0.0.1",
+      "dns": "8.8.8.8"
+    },
+    "groups": {
+      "devops": {
+        "role": "Contributor",
+        "users": [
+          "wtamayo",
+          "ramido"
+        ]
+      },
+      "cloudops": {
+        "role": "Contributor",
+        "users": [
+          "wtamayo",
+          "ramido"
+        ]
+      }
+    }
+  },
+  "non-pr": {
+    "tenant_domain": "sandbox.onmicrosoft.com",
+    "vars": {
+      "vnet": "10.0.0.1",
+      "dns": "8.8.8.8"
+    },
+    "groups": {
+      "devops": {
+        "role": "Contributor",
+        "users": [
+          "wtamayo",
+          "ramido"
+        ]
+      },
+      "cloudops": {
+        "role": "Contributor",
+        "users": [
+          "wtamayo",
+          "ramido"
+        ]
+      }
+    }
+  }
+}
