@@ -82,6 +82,9 @@ jobs:
         filename: ./file.json
         # The prefix for variables.
         prefix: json
+      
+    - name: node version
+      run: node -v
         
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
