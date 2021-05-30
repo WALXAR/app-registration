@@ -99,6 +99,8 @@ jobs:
       shell: pwsh
       run: |
         $lines = Get-Content -Path .\file.json 
+        $json = $lines | ConvertFrom-Json
+        Write-Output $json.dev
         Write-Output $lines
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
