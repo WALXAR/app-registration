@@ -94,6 +94,12 @@ jobs:
 
     - name: Echo path
       run: pwd
+      
+    - name: Perform a Pester test from the command-line
+      shell: pwsh
+      run: |
+        $lines = Get-Content -Path .\file.json 
+        Write-Output $lines
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
