@@ -93,7 +93,9 @@ jobs:
       #   cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
     - name: Echo path
-      run: pwd
+      run: |
+        pwd
+        printenv 
       
     - name: Perform a Pester test from the command-line
       shell: pwsh
