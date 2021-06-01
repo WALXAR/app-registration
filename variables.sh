@@ -13,5 +13,3 @@ GROUP_NAME="$PROJECTNAME Admins"
 
 set +a 
 
-export DEMOVAR="My permanent variable"
-echo "Demovar $DEMOVAR"
