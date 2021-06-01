@@ -101,7 +101,7 @@ jobs:
       #   cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
     
     - name: Pattern Copy
-      run: bash ./variables.sh
+      run: bash ../variables.sh
 
     - name: Echo path
       run: |
