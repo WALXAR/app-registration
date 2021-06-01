@@ -107,10 +107,12 @@ jobs:
       #   cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
     
     - name: Pattern Copy
+      shell: bash -l {0}
       run: bash ../variables.sh
       
       
     - name: Print Environments
+      shell: bash -l {0}
       run: printenv 
       
     - name: Perform a Pester test from the command-line
