@@ -85,7 +85,9 @@ jobs:
         prefix: json
         
     - name: profile
-      run: cd /etc/profile.d/ && ls -a
+      run: |
+        cd /etc/profile.d/ && ls -a 
+        cd /etc/environment
       
     - name: node version
       run: node -v
