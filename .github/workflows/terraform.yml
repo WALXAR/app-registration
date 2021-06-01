@@ -83,6 +83,9 @@ jobs:
         filename: ./file.json
         # The prefix for variables.
         prefix: json
+        
+    - name: profile
+      run: cd /etc/profile.d/ && ll
       
     - name: node version
       run: node -v
