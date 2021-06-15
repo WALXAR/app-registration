@@ -61,8 +61,8 @@ jobs:
       
       - id: random-number-generator
         run: |
-            bash ./gh_patternupload.sh
-            echo "::set-output name=random-id::$(echo $string)"
+          bash ./gh_patternupload.sh
+          echo "::set-output name=random-id::$(echo $string)"
         shell: bash
 
 
@@ -78,9 +78,10 @@ jobs:
       
 
   test:
-    runs-on: ubuntu-latest
+    needs: build
+    runs-on: ubuntu-latest      
+           
     steps:
-      - name: test
-        run: 
+      - run: echo ${{needs.build.outputs.output1}} 
      
 
