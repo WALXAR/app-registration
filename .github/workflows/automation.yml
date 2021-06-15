@@ -19,8 +19,14 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    outputs:
+      output1:
+        description: "Random number"
+        value: ${{ steps.random-number-generator.outputs.random-id }}
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUBACTIONSTOKEN }} 
+    
+
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -53,8 +59,14 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
       
-      - name: Pattern Copy
-        run: bash ./gh_patternupload.sh
+      - id: random-number-generator
+        run: |
+            bash ./gh_patternupload.sh
+            echo "::set-output name=random-id::$(echo $string)"
+        shell: bash
+
+
+
 
       # - name: Push changes
       #   uses: ad-m/github-push-action@master
@@ -63,5 +75,12 @@ jobs:
       #     branch: main
       #     directory: '/home/runner/repob/pocgithub'
       #     repository: 'WALXAR/pocgithub'
+      
 
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        run: 
+     
 
