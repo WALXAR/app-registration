@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-declare -A array=([vnet]="10.10" [dns]="8.8")
+string="hola mundo esto"
 git config --global user.email "walxar@gmail.com"
 git config --global user.name "walxar"
 hub config --global hub.protocol https
