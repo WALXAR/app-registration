@@ -1,6 +1,7 @@
 #!/bin/bash -x
 
 string="hola mundo esto"
+echo "::set-output name=random-id::$(echo $string)"
 git config --global user.email "walxar@gmail.com"
 git config --global user.name "walxar"
 hub config --global hub.protocol https
